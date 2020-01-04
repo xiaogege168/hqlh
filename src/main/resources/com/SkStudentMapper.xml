@@ -1,210 +1,208 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.limao.SkStudentMapper">
-  <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkStudent">
-    <!--@mbg.generated-->
-    <!--@Table hqlh.sk_student-->
-    <id column="stu_id" jdbcType="INTEGER" property="stu_id" />
-    <result column="stuName" jdbcType="VARCHAR" property="stuName" />
-    <result column="stuPassword" jdbcType="VARCHAR" property="stuPassword" />
-    <result column="age" jdbcType="VARCHAR" property="age" />
-    <result column="gender" jdbcType="VARCHAR" property="gender" />
-    <result column="parentNum" jdbcType="VARCHAR" property="parentNum" />
-    <result column="orderId" jdbcType="VARCHAR" property="orderId" />
-    <result column="realPrice" jdbcType="VARCHAR" property="realPrice" />
-    <result column="bshopId" jdbcType="VARCHAR" property="shopId" />
-    <result column="others" jdbcType="VARCHAR" property="others" />
-    <result column="createTime" jdbcType="VARCHAR" property="createTime" />
-    <result column="courseId" jdbcType="VARCHAR" property="courseId" />
-    <association property="skShop"  column="bshopId" javaType="com.limao.hqlh.entity.SkShop" >
-      <id column="ashopId" jdbcType="INTEGER" property="shopId" />
-      <result column="address" jdbcType="VARCHAR" property="address" />
-      <result column="leaderId" jdbcType="INTEGER" property="leaderId" />
-      <result column="monthIncome" jdbcType="INTEGER" property="monthIncome" />
-    </association>
-  </resultMap>
+    <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkStudent">
+        <!--@mbg.generated-->
+        <!--@Table hqlh.sk_student-->
+        <id column="stu_id" jdbcType="INTEGER" property="stu_id"/>
+        <result column="stuName" jdbcType="VARCHAR" property="stuName"/>
+        <result column="stuPassword" jdbcType="VARCHAR" property="stuPassword"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="parentNum" jdbcType="VARCHAR" property="parentNum"/>
+        <result column="orderId" jdbcType="VARCHAR" property="orderId"/>
+        <result column="realPrice" jdbcType="VARCHAR" property="realPrice"/>
+        <result column="bshopId" jdbcType="VARCHAR" property="shopId"/>
+        <result column="others" jdbcType="VARCHAR" property="others"/>
+        <result column="createTime" jdbcType="VARCHAR" property="createTime"/>
+        <result column="courseId" jdbcType="VARCHAR" property="courseId"/>
+        <association property="skShop" column="bshopId" javaType="com.limao.hqlh.entity.SkShop">
+            <id column="ashopId" jdbcType="INTEGER" property="shopId"/>
+            <result column="address" jdbcType="VARCHAR" property="address"/>
+            <result column="leaderId" jdbcType="INTEGER" property="leaderId"/>
+            <result column="monthIncome" jdbcType="INTEGER" property="monthIncome"/>
+        </association>
+    </resultMap>
 
 
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        stu_id, stuName, stuPassword, age, gender, parentNum, orderId, realPrice, shopId,
+        `others`, createTime, courseId
+    </sql>
+
+    <select id="findAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        b.stu_id,b.stuName,b.stuPassword,b.age,b.gender,b.parentNum,b.orderId,b.realPrice,
+        b.shopId bshopId,b.`others`,b. createTime,b. courseId,
+        a.shopId ashopId,a.address, a.leaderId, a.monthIncome
+        from hqlh.sk_student b
+        left outer join hqlh.sk_shop a
+        on a.shopId=b.shopId
+    </select>
 
 
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    stu_id, stuName, stuPassword, age, gender, parentNum, orderId, realPrice, shopId, 
-    `others`, createTime, courseId
-  </sql>
-  
-  <select id="findAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select
-    b.stu_id,b.stuName,b.stuPassword,b.age,b.gender,b.parentNum,b.orderId,b.realPrice,
-    b.shopId bshopId,b.`others`,b. createTime,b. courseId,
-    a.shopId ashopId,a.address, a.leaderId, a.monthIncome
-    from hqlh.sk_student b
-    left outer join hqlh.sk_shop a
-    on a.shopId=b.shopId
-  </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from hqlh.sk_student
+        where stu_id = #{stu_id,jdbcType=INTEGER}
+    </select>
 
-
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select
-    <include refid="Base_Column_List" />
-    from hqlh.sk_student
-    where stu_id = #{stu_id,jdbcType=INTEGER}
-  </select>
-
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    <!--@mbg.generated-->
-    delete from hqlh.sk_student
-    where stu_id = #{stu_id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.limao.hqlh.entity.SkStudent">
-    <!--@mbg.generated-->
-    insert into hqlh.sk_student (stu_id, stuName, stuPassword, 
-      age, gender, parentNum, 
-      orderId, realPrice, shopId, 
-      `others`, createTime, courseId
-      )
-    values (#{stu_id,jdbcType=INTEGER}, #{stuName,jdbcType=VARCHAR}, #{stuPassword,jdbcType=VARCHAR}, 
-      #{age,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{parentNum,jdbcType=VARCHAR}, 
-      #{orderId,jdbcType=VARCHAR}, #{realPrice,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR}, 
-      #{others,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.limao.hqlh.entity.SkStudent">
-    <!--@mbg.generated-->
-    insert into hqlh.sk_student
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="stu_id != null">
-        stu_id,
-      </if>
-      <if test="stuName != null">
-        stuName,
-      </if>
-      <if test="stuPassword != null">
-        stuPassword,
-      </if>
-      <if test="age != null">
-        age,
-      </if>
-      <if test="gender != null">
-        gender,
-      </if>
-      <if test="parentNum != null">
-        parentNum,
-      </if>
-      <if test="orderId != null">
-        orderId,
-      </if>
-      <if test="realPrice != null">
-        realPrice,
-      </if>
-      <if test="shopId != null">
-        shopId,
-      </if>
-      <if test="others != null">
-        `others`,
-      </if>
-      <if test="createTime != null">
-        createTime,
-      </if>
-      <if test="courseId != null">
-        courseId,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="stu_id != null">
-        #{stu_id,jdbcType=INTEGER},
-      </if>
-      <if test="stuName != null">
-        #{stuName,jdbcType=VARCHAR},
-      </if>
-      <if test="stuPassword != null">
-        #{stuPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null">
-        #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
-        #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="parentNum != null">
-        #{parentNum,jdbcType=VARCHAR},
-      </if>
-      <if test="orderId != null">
-        #{orderId,jdbcType=VARCHAR},
-      </if>
-      <if test="realPrice != null">
-        #{realPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="shopId != null">
-        #{shopId,jdbcType=VARCHAR},
-      </if>
-      <if test="others != null">
-        #{others,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
-        #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="courseId != null">
-        #{courseId,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkStudent">
-    <!--@mbg.generated-->
-    update hqlh.sk_student
-    <set>
-      <if test="stuName != null">
-        stuName = #{stuName,jdbcType=VARCHAR},
-      </if>
-      <if test="stuPassword != null">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from hqlh.sk_student
+        where stu_id = #{stu_id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.limao.hqlh.entity.SkStudent">
+        <!--@mbg.generated-->
+        insert into hqlh.sk_student (stu_id, stuName, stuPassword,
+        age, gender, parentNum,
+        orderId, realPrice, shopId,
+        `others`, createTime, courseId
+        )
+        values (#{stu_id,jdbcType=INTEGER}, #{stuName,jdbcType=VARCHAR}, #{stuPassword,jdbcType=VARCHAR},
+        #{age,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{parentNum,jdbcType=VARCHAR},
+        #{orderId,jdbcType=VARCHAR}, #{realPrice,jdbcType=VARCHAR}, #{shopId,jdbcType=VARCHAR},
+        #{others,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, #{courseId,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.limao.hqlh.entity.SkStudent">
+        <!--@mbg.generated-->
+        insert into hqlh.sk_student
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="stu_id != null">
+                stu_id,
+            </if>
+            <if test="stuName != null">
+                stuName,
+            </if>
+            <if test="stuPassword != null">
+                stuPassword,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="parentNum != null">
+                parentNum,
+            </if>
+            <if test="orderId != null">
+                orderId,
+            </if>
+            <if test="realPrice != null">
+                realPrice,
+            </if>
+            <if test="shopId != null">
+                shopId,
+            </if>
+            <if test="others != null">
+                `others`,
+            </if>
+            <if test="createTime != null">
+                createTime,
+            </if>
+            <if test="courseId != null">
+                courseId,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="stu_id != null">
+                #{stu_id,jdbcType=INTEGER},
+            </if>
+            <if test="stuName != null">
+                #{stuName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuPassword != null">
+                #{stuPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="parentNum != null">
+                #{parentNum,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="realPrice != null">
+                #{realPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="others != null">
+                #{others,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="courseId != null">
+                #{courseId,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkStudent">
+        <!--@mbg.generated-->
+        update hqlh.sk_student
+        <set>
+            <if test="stuName != null">
+                stuName = #{stuName,jdbcType=VARCHAR},
+            </if>
+            <if test="stuPassword != null">
+                stuPassword = #{stuPassword,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null">
+                age = #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="parentNum != null">
+                parentNum = #{parentNum,jdbcType=VARCHAR},
+            </if>
+            <if test="orderId != null">
+                orderId = #{orderId,jdbcType=VARCHAR},
+            </if>
+            <if test="realPrice != null">
+                realPrice = #{realPrice,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shopId = #{shopId,jdbcType=VARCHAR},
+            </if>
+            <if test="others != null">
+                `others` = #{others,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null">
+                createTime = #{createTime,jdbcType=VARCHAR},
+            </if>
+            <if test="courseId != null">
+                courseId = #{courseId,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where stu_id = #{stu_id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkStudent">
+        <!--@mbg.generated-->
+        update hqlh.sk_student
+        set stuName = #{stuName,jdbcType=VARCHAR},
         stuPassword = #{stuPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="age != null">
         age = #{age,jdbcType=VARCHAR},
-      </if>
-      <if test="gender != null">
         gender = #{gender,jdbcType=VARCHAR},
-      </if>
-      <if test="parentNum != null">
         parentNum = #{parentNum,jdbcType=VARCHAR},
-      </if>
-      <if test="orderId != null">
         orderId = #{orderId,jdbcType=VARCHAR},
-      </if>
-      <if test="realPrice != null">
         realPrice = #{realPrice,jdbcType=VARCHAR},
-      </if>
-      <if test="shopId != null">
         shopId = #{shopId,jdbcType=VARCHAR},
-      </if>
-      <if test="others != null">
         `others` = #{others,jdbcType=VARCHAR},
-      </if>
-      <if test="createTime != null">
         createTime = #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="courseId != null">
-        courseId = #{courseId,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where stu_id = #{stu_id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkStudent">
-    <!--@mbg.generated-->
-    update hqlh.sk_student
-    set stuName = #{stuName,jdbcType=VARCHAR},
-      stuPassword = #{stuPassword,jdbcType=VARCHAR},
-      age = #{age,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      parentNum = #{parentNum,jdbcType=VARCHAR},
-      orderId = #{orderId,jdbcType=VARCHAR},
-      realPrice = #{realPrice,jdbcType=VARCHAR},
-      shopId = #{shopId,jdbcType=VARCHAR},
-      `others` = #{others,jdbcType=VARCHAR},
-      createTime = #{createTime,jdbcType=VARCHAR},
-      courseId = #{courseId,jdbcType=VARCHAR}
-    where stu_id = #{stu_id,jdbcType=INTEGER}
-  </update>
+        courseId = #{courseId,jdbcType=VARCHAR}
+        where stu_id = #{stu_id,jdbcType=INTEGER}
+    </update>
 </mapper>

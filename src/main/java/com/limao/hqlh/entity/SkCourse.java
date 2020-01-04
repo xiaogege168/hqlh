@@ -1,5 +1,5 @@
 package com.limao.hqlh.entity;
-
+import java.util.*;
 public class SkCourse {
     private Integer courseID;
 
@@ -8,6 +8,16 @@ public class SkCourse {
     private Integer coursePrice;
 
     private String courseContent;
+    //--
+    private List<SkStudent> skStudent;
+
+    public List<SkStudent> getSkStudent() {
+        return skStudent;
+    }
+
+    public void setSkStudent(List<SkStudent> skStudent) {
+        this.skStudent = skStudent;
+    }
 
     public Integer getCourseID() {
         return courseID;

@@ -9,6 +9,14 @@
     <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
     <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
   </resultMap>
+  <resultMap id="CourseStuMap" type="com.limao.hqlh.entity.SkCourse">
+    <!--@mbg.generated-->
+    <!--@Table hqlh.sk_course-->
+    <id column="courseID" jdbcType="INTEGER" property="courseID" />
+    <result column="courseTime" jdbcType="VARCHAR" property="courseTime" />
+    <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
+    <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
+  </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     courseID, courseTime, coursePrice, courseContent
@@ -16,6 +24,13 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
     select 
+    <include refid="Base_Column_List" />
+    from hqlh.sk_course
+    where courseID = #{courseID,jdbcType=INTEGER}
+  </select>
+  <select id="selectStuByCourse" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
     <include refid="Base_Column_List" />
     from hqlh.sk_course
     where courseID = #{courseID,jdbcType=INTEGER}

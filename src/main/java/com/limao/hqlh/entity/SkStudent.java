@@ -24,6 +24,19 @@ public class SkStudent {
     private String createTime;
 
     private String courseId;
+//
+    private Skcourse skcourse;
+
+    private SkShop skShop;
+
+
+    public Skcourse getSkcourse() {
+        return skcourse;
+    }
+
+    public void setSkcourse(Skcourse skcourse) {
+        this.skcourse = skcourse;
+    }
 
     public SkShop getSkShop() {
         return skShop;
@@ -33,7 +46,6 @@ public class SkStudent {
         this.skShop = skShop;
     }
 
-    private SkShop skShop;
 
     public Integer getStu_id() {
         return stu_id;
