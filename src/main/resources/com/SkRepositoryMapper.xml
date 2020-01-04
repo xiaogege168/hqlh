@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limao.SkRepositoryMapper">
+  <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkRepository">
+    <!--@mbg.generated-->
+    <!--@Table hqlh.sk_repository-->
+    <id column="repositoryId" jdbcType="INTEGER" property="repositoryId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+    <result column="shopId" jdbcType="INTEGER" property="shopId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    repositoryId, `name`, amount, shopId
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hqlh.sk_repository
+    where repositoryId = #{repositoryId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from hqlh.sk_repository
+    where repositoryId = #{repositoryId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="repositoryId" keyProperty="repositoryId" parameterType="com.limao.hqlh.entity.SkRepository" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_repository (`name`, amount, shopId
+      )
+    values (#{name,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="repositoryId" keyProperty="repositoryId" parameterType="com.limao.hqlh.entity.SkRepository" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_repository
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="shopId != null">
+        shopId,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkRepository">
+    <!--@mbg.generated-->
+    update hqlh.sk_repository
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null">
+        shopId = #{shopId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where repositoryId = #{repositoryId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkRepository">
+    <!--@mbg.generated-->
+    update hqlh.sk_repository
+    set `name` = #{name,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      shopId = #{shopId,jdbcType=INTEGER}
+    where repositoryId = #{repositoryId,jdbcType=INTEGER}
+  </update>
+</mapper>

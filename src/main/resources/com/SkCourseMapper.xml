@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limao.SkCourseMapper">
+  <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkCourse">
+    <!--@mbg.generated-->
+    <!--@Table hqlh.sk_course-->
+    <id column="courseID" jdbcType="INTEGER" property="courseID" />
+    <result column="courseTime" jdbcType="VARCHAR" property="courseTime" />
+    <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
+    <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    courseID, courseTime, coursePrice, courseContent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hqlh.sk_course
+    where courseID = #{courseID,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from hqlh.sk_course
+    where courseID = #{courseID,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="courseID" keyProperty="courseID" parameterType="com.limao.hqlh.entity.SkCourse" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_course (courseTime, coursePrice, courseContent
+      )
+    values (#{courseTime,jdbcType=VARCHAR}, #{coursePrice,jdbcType=INTEGER}, #{courseContent,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="courseID" keyProperty="courseID" parameterType="com.limao.hqlh.entity.SkCourse" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_course
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="courseTime != null">
+        courseTime,
+      </if>
+      <if test="coursePrice != null">
+        coursePrice,
+      </if>
+      <if test="courseContent != null">
+        courseContent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="courseTime != null">
+        #{courseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="courseContent != null">
+        #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkCourse">
+    <!--@mbg.generated-->
+    update hqlh.sk_course
+    <set>
+      <if test="courseTime != null">
+        courseTime = #{courseTime,jdbcType=VARCHAR},
+      </if>
+      <if test="coursePrice != null">
+        coursePrice = #{coursePrice,jdbcType=INTEGER},
+      </if>
+      <if test="courseContent != null">
+        courseContent = #{courseContent,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where courseID = #{courseID,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkCourse">
+    <!--@mbg.generated-->
+    update hqlh.sk_course
+    set courseTime = #{courseTime,jdbcType=VARCHAR},
+      coursePrice = #{coursePrice,jdbcType=INTEGER},
+      courseContent = #{courseContent,jdbcType=VARCHAR}
+    where courseID = #{courseID,jdbcType=INTEGER}
+  </update>
+</mapper>

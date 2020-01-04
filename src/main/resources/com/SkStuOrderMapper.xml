@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limao.SkStuOrderMapper">
+  <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkStuOrder">
+    <!--@mbg.generated-->
+    <!--@Table hqlh.sk_stu_order-->
+    <id column="orderId" jdbcType="INTEGER" property="orderId" />
+    <result column="stuId" jdbcType="INTEGER" property="stuId" />
+    <result column="orderTime" jdbcType="VARCHAR" property="orderTime" />
+    <result column="teachComment" jdbcType="VARCHAR" property="teachComment" />
+    <result column="ampm" jdbcType="VARCHAR" property="ampm" />
+    <result column="today" jdbcType="VARCHAR" property="today" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    orderId, stuId, orderTime, teachComment, ampm, today
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hqlh.sk_stu_order
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from hqlh.sk_stu_order
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="orderId" keyProperty="orderId" parameterType="com.limao.hqlh.entity.SkStuOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_stu_order (stuId, orderTime, teachComment, 
+      ampm, today)
+    values (#{stuId,jdbcType=INTEGER}, #{orderTime,jdbcType=VARCHAR}, #{teachComment,jdbcType=VARCHAR}, 
+      #{ampm,jdbcType=VARCHAR}, #{today,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="orderId" keyProperty="orderId" parameterType="com.limao.hqlh.entity.SkStuOrder" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_stu_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        stuId,
+      </if>
+      <if test="orderTime != null">
+        orderTime,
+      </if>
+      <if test="teachComment != null">
+        teachComment,
+      </if>
+      <if test="ampm != null">
+        ampm,
+      </if>
+      <if test="today != null">
+        today,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="stuId != null">
+        #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null">
+        #{orderTime,jdbcType=VARCHAR},
+      </if>
+      <if test="teachComment != null">
+        #{teachComment,jdbcType=VARCHAR},
+      </if>
+      <if test="ampm != null">
+        #{ampm,jdbcType=VARCHAR},
+      </if>
+      <if test="today != null">
+        #{today,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkStuOrder">
+    <!--@mbg.generated-->
+    update hqlh.sk_stu_order
+    <set>
+      <if test="stuId != null">
+        stuId = #{stuId,jdbcType=INTEGER},
+      </if>
+      <if test="orderTime != null">
+        orderTime = #{orderTime,jdbcType=VARCHAR},
+      </if>
+      <if test="teachComment != null">
+        teachComment = #{teachComment,jdbcType=VARCHAR},
+      </if>
+      <if test="ampm != null">
+        ampm = #{ampm,jdbcType=VARCHAR},
+      </if>
+      <if test="today != null">
+        today = #{today,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkStuOrder">
+    <!--@mbg.generated-->
+    update hqlh.sk_stu_order
+    set stuId = #{stuId,jdbcType=INTEGER},
+      orderTime = #{orderTime,jdbcType=VARCHAR},
+      teachComment = #{teachComment,jdbcType=VARCHAR},
+      ampm = #{ampm,jdbcType=VARCHAR},
+      today = #{today,jdbcType=VARCHAR}
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.limao.SkRecordsMapper">
+  <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkRecords">
+    <!--@mbg.generated-->
+    <!--@Table hqlh.sk_records-->
+    <id column="recordsId" jdbcType="INTEGER" property="recordsId" />
+    <result column="goodsId" jdbcType="INTEGER" property="goodsId" />
+    <result column="createTime" jdbcType="DATE" property="createTime" />
+    <result column="plusMount" jdbcType="INTEGER" property="plusMount" />
+    <result column="subMount" jdbcType="INTEGER" property="subMount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    recordsId, goodsId, createTime, plusMount, subMount
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hqlh.sk_records
+    where recordsId = #{recordsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from hqlh.sk_records
+    where recordsId = #{recordsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="recordsId" keyProperty="recordsId" parameterType="com.limao.hqlh.entity.SkRecords" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_records (goodsId, createTime, plusMount, 
+      subMount)
+    values (#{goodsId,jdbcType=INTEGER}, #{createTime,jdbcType=DATE}, #{plusMount,jdbcType=INTEGER}, 
+      #{subMount,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" keyColumn="recordsId" keyProperty="recordsId" parameterType="com.limao.hqlh.entity.SkRecords" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into hqlh.sk_records
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        goodsId,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="plusMount != null">
+        plusMount,
+      </if>
+      <if test="subMount != null">
+        subMount,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=DATE},
+      </if>
+      <if test="plusMount != null">
+        #{plusMount,jdbcType=INTEGER},
+      </if>
+      <if test="subMount != null">
+        #{subMount,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.limao.hqlh.entity.SkRecords">
+    <!--@mbg.generated-->
+    update hqlh.sk_records
+    <set>
+      <if test="goodsId != null">
+        goodsId = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=DATE},
+      </if>
+      <if test="plusMount != null">
+        plusMount = #{plusMount,jdbcType=INTEGER},
+      </if>
+      <if test="subMount != null">
+        subMount = #{subMount,jdbcType=INTEGER},
+      </if>
+    </set>
+    where recordsId = #{recordsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkRecords">
+    <!--@mbg.generated-->
+    update hqlh.sk_records
+    set goodsId = #{goodsId,jdbcType=INTEGER},
+      createTime = #{createTime,jdbcType=DATE},
+      plusMount = #{plusMount,jdbcType=INTEGER},
+      subMount = #{subMount,jdbcType=INTEGER}
+    where recordsId = #{recordsId,jdbcType=INTEGER}
+  </update>
+</mapper>
