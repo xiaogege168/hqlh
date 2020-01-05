@@ -1,0 +1,15 @@
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (2, 2, '2019-09-07', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (3, 2, '2019-09-30', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (4, 2, '2019-09-05', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (5, 4, '2019-09-13', null, '10:30-12:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (7, 4, '2019-09-18', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (8, 4, '2019-09-22', null, '19:30-21:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (11, 2, '2019-09-23', null, '19:30-21:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (18, 4, '2019-09-23', null, '19:30-21:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (21, 4, '2019-09-24', null, '19:30-21:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (24, 6, '2019-09-27', null, '17:30-19:00', '2012-01-01');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (28, 6, '2019-10-04', null, '17:30-19:00', '2012-01-01');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (30, 6, '2019-10-07', null, '19:30-21:00', '2012-01-01');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (43, 11, '2019-10-10', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (46, 7, '2019-10-10', null, '17:30-19:00', '2019-10-19');
+INSERT INTO hqlh.sk_stu_order (orderId, stuId, orderTime, teachComment, ampm, today) VALUES (47, 6, '2012-01-01', null, '19:30-21:00', '2012-01-01');
