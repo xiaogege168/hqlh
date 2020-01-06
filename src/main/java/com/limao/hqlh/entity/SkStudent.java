@@ -25,18 +25,19 @@ public class SkStudent {
 
     private String courseId;
 //
-    private Skcourse skcourse;
+    private SkCourse skCourse;
+
+    public SkCourse getSkCourse() {
+        return skCourse;
+    }
+
+    public void setSkCourse(SkCourse skCourse) {
+        this.skCourse = skCourse;
+    }
 
     private SkShop skShop;
 
 
-    public Skcourse getSkcourse() {
-        return skcourse;
-    }
-
-    public void setSkcourse(Skcourse skcourse) {
-        this.skcourse = skcourse;
-    }
 
     public SkShop getSkShop() {
         return skShop;

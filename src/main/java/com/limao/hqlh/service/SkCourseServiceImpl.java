@@ -6,6 +6,8 @@ import com.limao.SkCourseMapper;
 import com.limao.hqlh.entity.SkCourse;
 import com.limao.hqlh.service.SkCourseService;
 
+import java.util.List;
+
 @Service
 public class SkCourseServiceImpl implements SkCourseService {
 
@@ -40,6 +42,11 @@ public class SkCourseServiceImpl implements SkCourseService {
     @Override
     public int updateByPrimaryKey(SkCourse record) {
         return skCourseMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<SkCourse> findAll() {
+        return skCourseMapper.findAll();
     }
 
 }

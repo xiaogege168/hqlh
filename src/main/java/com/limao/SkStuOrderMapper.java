@@ -2,6 +2,8 @@ package com.limao;
 
 import com.limao.hqlh.entity.SkStuOrder;
 
+import java.util.List;
+
 public interface SkStuOrderMapper {
     int deleteByPrimaryKey(Integer orderId);
 
@@ -10,6 +12,10 @@ public interface SkStuOrderMapper {
     int insertSelective(SkStuOrder record);
 
     SkStuOrder selectByPrimaryKey(Integer orderId);
+
+//    List<SkStuOrder> selectByToday(Integer orderId);
+//
+//    List<SkStuOrder>  selectByShop(Integer orderId);
 
     int updateByPrimaryKeySelective(SkStuOrder record);
 

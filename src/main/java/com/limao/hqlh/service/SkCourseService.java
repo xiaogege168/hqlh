@@ -2,6 +2,8 @@ package com.limao.hqlh.service;
 
 import com.limao.hqlh.entity.SkCourse;
 
+import java.util.List;
+
 public interface SkCourseService {
 
 
@@ -16,6 +18,8 @@ public interface SkCourseService {
     int updateByPrimaryKeySelective(SkCourse record);
 
     int updateByPrimaryKey(SkCourse record);
+
+    List<SkCourse> findAll();
 
 }
 

@@ -1,7 +1,7 @@
 package com.limao.hqlh.entity;
 import java.util.*;
 public class SkCourse {
-    private Integer courseID;
+    private Integer courseId;
 
     private String courseTime;
 
@@ -9,22 +9,22 @@ public class SkCourse {
 
     private String courseContent;
     //--
-    private List<SkStudent> skStudent;
+    private List<SkStudent> skStudents;
 
-    public List<SkStudent> getSkStudent() {
-        return skStudent;
+    public List<SkStudent> getSkStudents() {
+        return skStudents;
     }
 
-    public void setSkStudent(List<SkStudent> skStudent) {
-        this.skStudent = skStudent;
+    public void setSkStudents(List<SkStudent> skStudents) {
+        this.skStudents = skStudents;
     }
 
-    public Integer getCourseID() {
-        return courseID;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setCourseID(Integer courseID) {
-        this.courseID = courseID;
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseTime() {

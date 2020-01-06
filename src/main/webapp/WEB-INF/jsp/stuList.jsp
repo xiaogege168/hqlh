@@ -17,8 +17,8 @@ ${message}
 
 <table width="100%" border="1" align="center">
     <tr bgcolor="#949494">
-        <th>名字</th><th>年龄龄</th><th>价格</th><th>日期</th>
-        <th>店址</th><th>月收入</th><th>店长</th><th>店ID</th>
+        <th>名字</th><th>年龄</th><th>价格</th><th>日期</th>
+        <th>店址</th> <th>课程</th>
     </tr>
     <c:forEach var="stu" items="${stuList}">
     <tr>
@@ -27,9 +27,7 @@ ${message}
         <td>${stu.realPrice}</td>
         <td>${stu.createTime}</td>
         <td>${stu.skShop.address}</td>
-        <td>${stu.skShop.monthIncome}</td>
-        <td>${stu.skShop.leaderId}</td>
-        <td>${stu.skShop.shopId}</td>
+        <td>${stu.skCourse.courseTime}</td>
     </tr>
     </c:forEach>
 </table>

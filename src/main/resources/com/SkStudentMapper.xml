@@ -22,6 +22,12 @@
             <result column="leaderId" jdbcType="INTEGER" property="leaderId"/>
             <result column="monthIncome" jdbcType="INTEGER" property="monthIncome"/>
         </association>
+        <association property="skCourse" javaType="com.limao.hqlh.entity.SkCourse">
+            <id column="ccourseId" jdbcType="INTEGER" property="courseId" />
+            <result column="courseTime" jdbcType="VARCHAR" property="courseTime" />
+            <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
+            <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
+        </association>
     </resultMap>
 
 
@@ -36,10 +42,14 @@
         select
         b.stu_id,b.stuName,b.stuPassword,b.age,b.gender,b.parentNum,b.orderId,b.realPrice,
         b.shopId bshopId,b.`others`,b. createTime,b. courseId,
-        a.shopId ashopId,a.address, a.leaderId, a.monthIncome
+        a.shopId ashopId,a.address, a.leaderId, a.monthIncome,
+        c.courseID courseId,c.courseTime,c.coursePrice,c.courseContent
         from hqlh.sk_student b
         left outer join hqlh.sk_shop a
         on a.shopId=b.shopId
+        left outer join hqlh.sk_course c
+        on b.courseId=c.courseId
+        order by b.createTime desc
     </select>
 
 

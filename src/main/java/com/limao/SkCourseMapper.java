@@ -2,6 +2,8 @@ package com.limao;
 
 import com.limao.hqlh.entity.SkCourse;
 
+import java.util.List;
+
 public interface SkCourseMapper {
     int deleteByPrimaryKey(Integer courseID);
 
@@ -14,4 +16,6 @@ public interface SkCourseMapper {
     int updateByPrimaryKeySelective(SkCourse record);
 
     int updateByPrimaryKey(SkCourse record);
+
+    List<SkCourse> findAll();
 }

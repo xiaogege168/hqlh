@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.limao.hqlh.entity.SkCourse">
     <!--@mbg.generated-->
     <!--@Table hqlh.sk_course-->
-    <id column="courseID" jdbcType="INTEGER" property="courseID" />
+    <id column="courseID" jdbcType="INTEGER" property="courseId" />
     <result column="courseTime" jdbcType="VARCHAR" property="courseTime" />
     <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
     <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
@@ -12,11 +12,36 @@
   <resultMap id="CourseStuMap" type="com.limao.hqlh.entity.SkCourse">
     <!--@mbg.generated-->
     <!--@Table hqlh.sk_course-->
-    <id column="courseID" jdbcType="INTEGER" property="courseID" />
+    <id column="acourseId" jdbcType="INTEGER" property="courseId" />
     <result column="courseTime" jdbcType="VARCHAR" property="courseTime" />
     <result column="coursePrice" jdbcType="INTEGER" property="coursePrice" />
     <result column="courseContent" jdbcType="VARCHAR" property="courseContent" />
+      <collection property="skStudents" ofType="com.limao.hqlh.entity.SkStudent">
+        <id column="stu_id" jdbcType="INTEGER" property="stu_id"/>
+        <result column="stuName" jdbcType="VARCHAR" property="stuName"/>
+        <result column="stuPassword" jdbcType="VARCHAR" property="stuPassword"/>
+        <result column="age" jdbcType="VARCHAR" property="age"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="parentNum" jdbcType="VARCHAR" property="parentNum"/>
+        <result column="orderId" jdbcType="VARCHAR" property="orderId"/>
+        <result column="realPrice" jdbcType="VARCHAR" property="realPrice"/>
+        <result column="bshopId" jdbcType="VARCHAR" property="shopId"/>
+        <result column="others" jdbcType="VARCHAR" property="others"/>
+        <result column="createTime" jdbcType="VARCHAR" property="createTime"/>
+        <result column="bcourseId" jdbcType="VARCHAR" property="courseId"/>
+      </collection>
   </resultMap>
+
+  <select id="findAll" resultMap="CourseStuMap">
+    select
+    a.courseID acourseID,a.courseContent,a.coursePrice,a.coursePrice,a.courseTime,
+    b.shopId,b.age,b.createTime,b.others,b.realPrice,b.stuName,b.courseId bcourseID
+    from hqlh.sk_course a left outer join hqlh.sk_student b
+    on a.courseID=b.courseID
+    order by  a.courseID
+  </select>
+
+
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
     courseID, courseTime, coursePrice, courseContent
@@ -87,7 +112,7 @@
         courseContent = #{courseContent,jdbcType=VARCHAR},
       </if>
     </set>
-    where courseID = #{courseID,jdbcType=INTEGER}
+    where courseID = #{courseId,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.limao.hqlh.entity.SkCourse">
     <!--@mbg.generated-->
@@ -95,6 +120,6 @@
     set courseTime = #{courseTime,jdbcType=VARCHAR},
       coursePrice = #{coursePrice,jdbcType=INTEGER},
       courseContent = #{courseContent,jdbcType=VARCHAR}
-    where courseID = #{courseID,jdbcType=INTEGER}
+    where courseID = #{courseId,jdbcType=INTEGER}
   </update>
 </mapper>

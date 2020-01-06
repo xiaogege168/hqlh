@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.lang.reflect.Method;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("stu")
@@ -29,16 +31,30 @@ public class StudentContrller {
         mv.getModel().put("stuList",skStudentService.selectByPrimaryKey(Integer.parseInt(a)));
         return mv;
     }
-     @RequestMapping("stuAdd")
-    public String stuAdd( ){
-        return "stuAdd";
+
+     @RequestMapping("toAdd")
+    public String toAdd( ){
+
+         return "student/toAdd";
+
     }
-     @RequestMapping(value = "add" )
-    public ModelAndView add(SkStudent skStudent){
-        ModelAndView mv=new ModelAndView("stuList");
-        skStudentService.insertSelective(skStudent);
-         mv.getModel().put("stuList",skStudentService.findAll());
-        return mv;
+     @RequestMapping("add")
+    public ModelAndView stuAdd(SkStudent skStudent){
+         skStudent.setCreateTime
+                 (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+         ModelAndView mv=new ModelAndView("addSuccess");
+
+         skStudentService.insertSelective(skStudent);
+
+         return findAll();
+
     }
+//     @RequestMapping(value = "add" )
+//    public ModelAndView add(SkStudent skStudent){
+//        ModelAndView mv=new ModelAndView("stuList");
+//        skStudentService.insertSelective(skStudent);
+//         mv.getModel().put("stuList",skStudentService.findAll());
+//        return mv;
+//    }
 
 }
