@@ -17,13 +17,20 @@
   </sql>
 
 
-  <select id="selectByShop" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     <!--@mbg.generated-->
-    select 
+    select
     <include refid="Base_Column_List" />
     from hqlh.sk_stu_order
-    where orderId = #{orderId,jdbcType=INTEGER}
+
   </select>
+<!--  <select id="selectByShop" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
+<!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
+<!--    select -->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from hqlh.sk_stu_order-->
+<!--    where orderId = #{orderId,jdbcType=INTEGER}-->
+<!--  </select>-->
 <!--  <select id="selectByToday" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
 <!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
 <!--    select-->
@@ -31,13 +38,13 @@
 <!--    from hqlh.sk_stu_order-->
 <!--    where orderId = #{orderId,jdbcType=INTEGER}-->
 <!--  </select>-->
-<!--  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">-->
-<!--    &lt;!&ndash;@mbg.generated&ndash;&gt;-->
-<!--    select-->
-<!--    <include refid="Base_Column_List" />-->
-<!--    from hqlh.sk_stu_order-->
-<!--    where orderId = #{orderId,jdbcType=INTEGER}-->
-<!--  </select>-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select
+    <include refid="Base_Column_List" />
+    from hqlh.sk_stu_order
+    where orderId = #{orderId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--@mbg.generated-->
     delete from hqlh.sk_stu_order

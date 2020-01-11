@@ -2,6 +2,8 @@ package com.limao.hqlh.service;
 
 import com.limao.hqlh.entity.SkStuOrder;
 
+import java.util.List;
+
 public interface SkStuOrderService {
 
 
@@ -16,6 +18,8 @@ public interface SkStuOrderService {
     int updateByPrimaryKeySelective(SkStuOrder record);
 
     int updateByPrimaryKey(SkStuOrder record);
+
+    List< SkStuOrder> findAll();
 
 }
 

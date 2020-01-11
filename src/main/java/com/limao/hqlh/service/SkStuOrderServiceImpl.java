@@ -6,6 +6,8 @@ import com.limao.hqlh.entity.SkStuOrder;
 import com.limao.SkStuOrderMapper;
 import com.limao.hqlh.service.SkStuOrderService;
 
+import java.util.List;
+
 @Service
 public class SkStuOrderServiceImpl implements SkStuOrderService {
 
@@ -40,6 +42,11 @@ public class SkStuOrderServiceImpl implements SkStuOrderService {
     @Override
     public int updateByPrimaryKey(SkStuOrder record) {
         return skStuOrderMapper.updateByPrimaryKey(record);
+    }
+
+    @Override
+    public List<SkStuOrder> findAll() {
+        return skStuOrderMapper.findAll();
     }
 
 }

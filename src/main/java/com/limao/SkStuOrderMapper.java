@@ -13,6 +13,8 @@ public interface SkStuOrderMapper {
 
     SkStuOrder selectByPrimaryKey(Integer orderId);
 
+    List< SkStuOrder> findAll() ;
+
 //    List<SkStuOrder> selectByToday(Integer orderId);
 //
 //    List<SkStuOrder>  selectByShop(Integer orderId);
